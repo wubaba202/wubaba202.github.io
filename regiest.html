@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="CSS/regiest.css">
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <p id="userlogin">注册</p>
+        <p id="usereng">USER REGISTER</p>
+    </div>
+    <div id="div3">
+        <form action="#" method="get" id="form">
+            <table>
+                <tr>
+                    <td class="left"><label for="user">用户名</label></td>
+                    <td class="right"><input type="text" name="user" id="user" required placeholder="请输入用户名"><span
+                            id="span_user"></span></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="password">密码</label></td>
+                    <td class="right"><input type="password" name="password" id="password" required placeholder="请输入密码"><span
+                            id="span_password"></span></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="Email">邮箱</label></td>
+                    <td class="right"><input type="email" name="Email" id="Email"  placeholder="请输入Email"></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="name">姓名</label></td>
+                    <td class="right"><input type="text" name="name" id="name"  placeholder="请输入真实姓名"></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="tel">手机号</label></td>
+                    <td class="right"><input type="text" name="tel" id="tel"  placeholder="请输入手机号"></td>
+                </tr>
+                <tr>
+                    <td class="left">性别</td>
+                    <td class="right">
+                        <input type="radio" name="sex" value="man" checked>男
+                        <input type="radio" name="sex" value="woman">女
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <label for="bir">出生日期</label>
+                    </td>
+                    <td class="right">
+                        <input type="date" name="date" id="bir">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="left"><label for="check">验证码</label></td>
+                    <td class="right"><input type="text" id="check" name="check"  placeholder="请输入验证码"> <img
+                            id="img_check" src="img/verify_code.jpg">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="submit_button">
+                        <!--                   <input type="image" src="img/regbtn.jpg"> &lt;!&ndash;定义图像作为提交按钮&ndash;&gt;-->
+                        <button id="button_login">立即注册</button>
+                        <!--                   <input type="submit" id="button_login" value="立即注册">-->
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="div4">
+        <span>已有账号?</span>
+        <a href="index.html">立即登录</a>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function () {
+        document.getElementById("form").onsubmit = function () {
+            return checkuser() && checkpassword();
+        }
+        document.getElementById("user").onblur=checkuser;
+        document.getElementById("password").onblur=checkpassword;
+    }
+
+    function checkuser() {
+        var user = document.getElementById("user").value;
+        var check = /^\w{6,12}$/;
+        var b = check.test(user);
+        var s = document.getElementById("span_user");
+        if (b) {
+            s.innerHTML = "<img src='img/right.png' id='addimg'>";
+        } else {
+            s.innerHTML = "用户名由6~12位字符构成";
+        }
+        return b;
+    }
+
+    function checkpassword() {
+        var password = document.getElementById("password").value;
+        var check = /^\w{6,12}$/;
+        var b = check.test(password);
+        var s = document.getElementById("span_password");
+        if (b) {
+            s.innerHTML = "<img src='img/right.png' id='addimg'>";
+        } else {
+            s.innerHTML = "密码由6~12位字符构成";
+        }
+        return b;
+    }
+</script>
+</body>
+</html>
